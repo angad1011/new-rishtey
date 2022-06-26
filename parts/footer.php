@@ -203,9 +203,9 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
                                 <input type="text" class="gt-form-control form-1" placeholder="<?php echo $lang['Enter First Name']; ?>" name="nickname" id="nickname" ng-maxlength="30" ng-model="user.name">
-                                <span ng-show="frm.lastname.$dirty && frm.lastname.$error.maxlength" class="text-danger gt-margin-left-10">Name Is Too Long!</span>
+                                <!-- <span ng-show="frm.lastname.$dirty && frm.lastname.$error.maxlength" class="text-danger gt-margin-left-10">Name Is Too Long!</span> -->
                                 <input type="text" class="gt-form-control form-2" placeholder="<?php echo $lang['Enter Last Name']; ?>" name="lastname" id="lastname" ng-maxlength="30" ng-model="user.lastname">
-                                <span ng-show="frm.nickname.$dirty && frm.nickname.$error.maxlength" class="text-danger gt-margin-left-10">Name Is Too Long !</span>
+                                <!-- <span ng-show="frm.nickname.$dirty && frm.nickname.$error.maxlength" class="text-danger gt-margin-left-10">Name Is Too Long !</span> -->
                             </div>
                         </div>
                     </div>
@@ -285,13 +285,15 @@
                         </div>
                     </div>
                     <div class="col-xxl-16 col-xl-16 form-group">
+                        
                         <div class="row">
-                            <div class="input-group">
+                            <div class="input-group ">
                                 <span class="input-group-addon"><i class="fa fa-book fa-fw"></i></span>
                                 <select class="gt-form-control flat chosen-single chosen-select" name="religion" id="religion">
                                     <option value=""><?php echo $lang['Select Your Religion']; ?></option>
                                     <?php
                                         $SQL_STATEMENT_religion = $DatabaseCo->dbLink->query("SELECT * FROM religion WHERE status='APPROVED' ORDER BY religion_name ASC");
+                                    
                                         while ($DatabaseCo->dbRow = mysqli_fetch_object($SQL_STATEMENT_religion)) {
                                     ?>
                                     <option value="<?php echo $DatabaseCo->dbRow->religion_id; ?>">
@@ -360,8 +362,8 @@
                                     </div>
                                     <div class="col-xxl-11 col-xs-11 col-sm-11 col-md-11 col-lg-12">
                                         <input type="number" class="gt-form-control" placeholder="<?php echo $lang['Enter Your 10 Digit No']; ?>" name="mobile" id="mobile" maxlength="10" ng-maxlength="10" ng-minlength="5" ng-model="user.mobile">
-                                        <span ng-show="frm.mobile.$dirty && frm.mobile.$error.maxlength" class="text-danger">Mobile Number Is Too Long !</span>
-                                        <span ng-show="frm.mobile.$dirty && frm.mobile.$error.minlength" class="text-danger">Mobile Number Is Too Short !</span>
+                                        <!-- <span ng-show="frm.mobile.$dirty && frm.mobile.$error.maxlength" class="text-danger">Mobile Number Is Too Long !</span> -->
+                                        <!-- <span ng-show="frm.mobile.$dirty && frm.mobile.$error.minlength" class="text-danger">Mobile Number Is Too Short !</span> -->
                                     </div>
                                 </div>
                             </div>
@@ -372,7 +374,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fas fa-at fa-fw"></i></span>
                                 <input type="email" class="gt-form-control form-1" placeholder="<?php echo $lang['Enter Your Email Id']; ?>" name="email" ng-model="user.email">
-                                <span ng-show="frm.email.$dirty && frm.email.$error.email" class="text-danger gt-margin-left-10">Enter Valid Email Id !</span>
+                                <!-- <span ng-show="frm.email.$dirty && frm.email.$error.email" class="text-danger gt-margin-left-10">Enter Valid Email Id !</span> -->
                             </div>
                         </div>
                     </div>
