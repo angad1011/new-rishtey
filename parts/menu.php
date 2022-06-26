@@ -185,7 +185,7 @@ $menu_settings = $DatabaseCo->dbLink->query("SELECT menu_search,menu_success,men
                     </li>                 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown gt-border-right-green gt-border-left-green">
+                    <li class="dropdown border-right-green border-left-green">
                         <a href="#" class="dropdown-toggle ripplelink pl-30 pr-30" data-toggle="dropdown" role="button" aria-expanded="false">
                             <i class="fas fa-cog"></i> <span class="hidden-xxl hidden-xl hidden-lg"><?php echo $lang['Settings']; ?></span>
                         </a>
@@ -197,7 +197,7 @@ $menu_settings = $DatabaseCo->dbLink->query("SELECT menu_search,menu_success,men
                         </ul>
                     </li>
                    
-                    <li class="dropdown gt-border-right-green">
+                    <li class="dropdown border-right-green">
                         <a href="#" class="dropdown-toggle ripplelink pl-30 pr-30" data-toggle="dropdown" role="button" aria-expanded="false">
                             <i class="fa fa-bell"></i> <span class="hidden-xxl hidden-xl hidden-lg"><?php echo $lang['Notification']; ?></span>
 							<span class="badge" style="position:absolute;top:8px;right: 16px;">

@@ -3441,11 +3441,11 @@ a.gt-member-profile-circle:hover {
 /*-----------------------------------thumbnail view search result End-------------------------------*/
 /*-- Borders --*/
 
-.gt-border-right-green {
+.border-right-green {
     border-right: 1px solid #3d7c00;
 }
 
-.gt-border-left-green {
+.border-left-green {
     border-left: 1px solid #3d7c00;
 }
 
