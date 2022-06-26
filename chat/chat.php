@@ -20,7 +20,7 @@ if (!isset($_SESSION['openChatBoxes'])) {
 }
 
 function chatHeartbeat($connection) {
-	$sql = "select register.username,register.gender,register.photo1,chat.from,chat.message,chat.to,chat.id,chat.sent,chat.recd from chat,register where (chat.to = '".mysqli_real_escape_string($connection,$_SESSION['chatuser'])."' AND recd = 0) and chat.from=register.index_id  order by id ASC";
+	$sql = "select register.username,register.gender,register.photo1,chat.user_from,chat.message,chat.user_to,chat.id,chat.sent,chat.recd from chat,register where (chat.user_to = '".mysqli_real_escape_string($connection,$_SESSION['chatuser'])."' AND recd = 0) and chat.user_from=register.index_id  order by id ASC";
 	
 	$query = mysqli_query($connection,$sql);
 	$items = '';
@@ -29,7 +29,7 @@ function chatHeartbeat($connection) {
 
 	while ($chat = mysqli_fetch_array($query)) {
 
-		if (!isset($_SESSION['openChatBoxes'][$chat['from']]) && isset($_SESSION['chatHistory'][$chat['from']])) {
+		if (!isset($_SESSION['openChatBoxes'][$chat['user_from']]) && isset($_SESSION['chatHistory'][$chat['from']])) {
 			$items = $_SESSION['chatHistory'][$chat['from']];
 		}
 		
@@ -54,27 +54,27 @@ function chatHeartbeat($connection) {
 			"s": "0",
 			"u": "{$chat['username']}",
 			"ph": "{$chat['photo1']}",
-			"f": "{$chat['from']}",
+			"f": "{$chat['user_from']}",
 			"m": "{$chat['message']}"
 	   },
 EOD;
 
-	if (!isset($_SESSION['chatHistory'][$chat['from']])) {
-		$_SESSION['chatHistory'][$chat['from']] = '';
+	if (!isset($_SESSION['chatHistory'][$chat['user_from']])) {
+		$_SESSION['chatHistory'][$chat['user_from']] = '';
 	}
 
-	$_SESSION['chatHistory'][$chat['from']] .= <<<EOD
+	$_SESSION['chatHistory'][$chat['user_from']] .= <<<EOD
 						   {
 			"s": "0",
 			"u": "{$chat['username']}",
-			"f": "{$chat['from']}",
+			"f": "{$chat['user_from']}",
 			"ph": "{$chat['photo1']}",
 			"m": "{$chat['message']}"
 	   },
 EOD;
 		
-		unset($_SESSION['tsChatBoxes'][$chat['from']]);
-		$_SESSION['openChatBoxes'][$chat['from']] = $chat['sent'];
+		unset($_SESSION['tsChatBoxes'][$chat['user_from']]);
+		$_SESSION['openChatBoxes'][$chat['user_from']] = $chat['sent'];
 	}
 
 	if (!empty($_SESSION['openChatBoxes'])) {
@@ -110,7 +110,7 @@ EOD;
 	}
 }
 
-	$sql = "update chat set recd = 1 where chat.to = '".mysqli_real_escape_string($connection,$_SESSION['chatuser'])."' and recd = 0";
+	$sql = "update chat set recd = 1 where chat.user_to = '".mysqli_real_escape_string($connection,$_SESSION['chatuser'])."' and recd = 0";
 	$query = mysqli_query($connection,$sql);
 
 	if ($items != '') {
@@ -208,6 +208,18 @@ function sendChat($connection) {
 	$from = $_SESSION['chatuser'];
 	$to = $_POST['to'];
 	$message = $_POST['message'];
+
+	//start to check is any contact details send through chat
+
+	$checkNumber=validateMesaage($message);
+	
+	
+	if($checkNumber == "0"){
+		return;
+	}
+	
+	//end to check is any contact details send through chat
+
 	$sql = "select register.username from register where register.index_id='$from' limit 1";
 	$uname = mysqli_query($connection,$sql);
 	$from_user='';
@@ -238,7 +250,7 @@ EOD;
 	
 	mysqli_query($connection,"UPDATE online_users SET dt='$date' WHERE index_id=".$from);
 
-	$sql = "insert into chat (chat.from,chat.to,message,sent) values ('".mysqli_real_escape_string($connection,$from)."', '".mysqli_real_escape_string($connection,$to)."','".mysqli_real_escape_string($connection,$message)."','$date')";
+	$sql = "insert into chat (chat.user_from,chat.user_to,message,sent) values ('".mysqli_real_escape_string($connection,$from)."', '".mysqli_real_escape_string($connection,$to)."','".mysqli_real_escape_string($connection,$message)."','$date')";
 	$query = mysqli_query($connection,$sql);
 	echo "1";
 	
@@ -262,5 +274,26 @@ function sanitize($text) {
 	$text = str_replace("\r\n","\n",$text);
 	$text = str_replace("\n","<br>",$text);
 	return $text;
+}
+function validateMesaage($string){
+	$authvalue="0";
+	if ( is_numeric($string) ) {
+		// echo "\"{$string}\" is a number.";
+		return $authvalue;
+	}
+	$isThereNumber = false;
+	for ($i = 0; $i < strlen($string); $i++) {
+		if ( ctype_digit($string[$i]) ) {
+			
+			$isThereNumber = true;
+			break;
+		}
+	}
+	if ( $isThereNumber ) {
+		
+		return $authvalue;
+	}
+
+	
 }
 ?>
