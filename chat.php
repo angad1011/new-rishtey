@@ -592,6 +592,7 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxtitle,chatname) {
 
 		message = message.replace(/^\s+|\s+$/g,"");
 
+
 		$(chatboxtextarea).val('');
 
 		$(chatboxtextarea).focus();
@@ -600,9 +601,16 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxtitle,chatname) {
 
 		if (message != '') {
 
-		$("#chatbox_"+chatboxtitle+" .chatboxcontent").append('<div class="chatboxmessage"><span class="chat_image"><img src="my_photos/<?php echo $a;?>" height=20px width=26px>&nbsp;</span><span class="chatboxmessagefrom">'+'me'+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+message+'</span></div>');
+		
 
 			$.post("chat/chat?action=sendchat", {to: chatboxtitle, message: message} , function(data){
+
+				if(data !="1"){
+					askMembership();
+					return false;
+				}
+
+				$("#chatbox_"+chatboxtitle+" .chatboxcontent").append('<div class="chatboxmessage"><span class="chat_image"><img src="my_photos/<?php echo $a;?>" height=20px width=26px>&nbsp;</span><span class="chatboxmessagefrom">'+'me'+':&nbsp;&nbsp;</span><span class="chatboxmessagecontent">'+message+'</span></div>');
 
 				message = message.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\"/g,"&quot;");
 
@@ -858,6 +866,12 @@ jQuery.cookie = function(name, value, options) {
     }
 
 };
-
+function askMembership() {
+  let text = "You are not allow to share contact details!\n Please upgrade your accout now.";
+  if (confirm(text) == true) {
+   window.location.href="/membershipplans";
+  }
+  
+}
 </script>
 
