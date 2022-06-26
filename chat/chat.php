@@ -205,19 +205,20 @@ function sendChat($connection) {
 	$date=date('Y-m-d H:i:s');
 	
 	
+	
 	$from = $_SESSION['chatuser'];
 	$to = $_POST['to'];
 	$message = $_POST['message'];
 
 	//start to check is any contact details send through chat
-
-	$checkNumber=validateMesaage($message);
 	
-	
-	if($checkNumber == "0"){
-		return;
+	if($_SESSION['mem_status'] != "Paid"){
+		$checkNumber=validateMesaage($message);
+		if($checkNumber == "0"){
+			echo $checkNumber;
+			return;
+		}
 	}
-	
 	//end to check is any contact details send through chat
 
 	$sql = "select register.username from register where register.index_id='$from' limit 1";

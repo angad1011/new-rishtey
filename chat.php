@@ -170,7 +170,7 @@ function createChatBox(chatboxtitle,chatname,minimizeChatBox) {
 	//$exe1=mysqli_query($DatabaseCo->dbLink,$select1) or die(mysqli_error($DatabaseCo->dbLink));
 	$fetch1=mysqli_fetch_object($select1);
 	?>
-	.html('<div style="cursor:pointer" onclick="javascript:toggleChatBoxGrowth(\''+chatboxtitle+'\')"><div class="chatboxhead"><div class="chatboxtitle">'+chatname+'</div><div class="chatboxoptions">- <a href="javascript:void(0)" onclick="javascript:closeChatBox(\''+chatboxtitle+'\')"> X </a></div><br clear="all"/></div></div><div class="chatboxcontent"></div><div class="chatboxinput"><textarea class="chatboxtextarea" onkeydown="javascript:return checkChatBoxInputKey(event,this,\''+chatboxtitle+'\',\''+chatname+'\');" <?php if($_SESSION['mem_status']=='Active' || $fetch1->chat=='No' ){ echo "disabled";}?> ><?php if($_SESSION['mem_status']=='Active' || $fetch1->chat=='No'){ echo "If you want to chat then upgrade your membership plan.";}?></textarea></div>')
+	.html('<div style="cursor:pointer" onclick="javascript:toggleChatBoxGrowth(\''+chatboxtitle+'\')"><div class="chatboxhead"><div class="chatboxtitle">'+chatname+'</div><div class="chatboxoptions">- <a href="javascript:void(0)" onclick="javascript:closeChatBox(\''+chatboxtitle+'\')"> X </a></div><br clear="all"/></div></div><div class="chatboxcontent"></div><div class="chatboxinput"><textarea class="chatboxtextarea" onkeydown="javascript:return checkChatBoxInputKey(event,this,\''+chatboxtitle+'\',\''+chatname+'\');" <?php if( $fetch1->chat=='No' ){ echo "disabled";}?> ><?php if($fetch1->chat=='No'){ echo "If you want to chat then upgrade your membership plan.";}?></textarea></div>')
 
 	.appendTo($( "body" ));
 
@@ -605,7 +605,7 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxtitle,chatname) {
 
 			$.post("chat/chat?action=sendchat", {to: chatboxtitle, message: message} , function(data){
 
-				if(data !="1"){
+				if(data =="0"){
 					askMembership();
 					return false;
 				}
