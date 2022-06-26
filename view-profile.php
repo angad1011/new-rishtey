@@ -12,6 +12,7 @@ $get_own_data = mysqli_fetch_object($sel_own_data);
 /*-- Field Enable / Disable -- */
 $SQL_STATEMENT_FIELD = $DatabaseCo->dbLink->query("SELECT sub_caste,will_to_marry,weight,body_type,complexion,physical_status,additional_degree,annual_income,diet,smoke,drink,dosh,star,rasi,birthtime,birthplace,family_profile,family_status,family_type,family_value,father_occupation,mother_occupation,no_of_brother,no_of_married_brother,no_of_sister,no_of_married_sister,profile_text,part_expect FROM field_settings WHERE id='1'");
 $row_field=mysqli_fetch_object($SQL_STATEMENT_FIELD);
+$abcd=1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
