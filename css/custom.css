@@ -777,7 +777,7 @@ header {
 }
 
 a.gt-myhome-caption {
-    background: #e47203;
+    background: #0b0e21;
     display: block;
     padding: 15px 10px;
     text-align: center;
@@ -891,11 +891,11 @@ a.gt-result {
 .inPanelGreenTitle {
     font-weight: 600;
     font-size: 14px !important;
-    color: #499202 !important;
+    color: #ed1c24 !important;
 }
 
 .inHomePanel .gt-panel-border-green {
-    border-top: 8px solid #499202;
+    border-top: 8px solid #ed1c24;
     padding: 15px;
     margin-bottom: 0px;
     background: rgb(255 255 255);
@@ -1504,7 +1504,7 @@ a.gt-footer-develop:focus {
 }
 
 .inContactPanel .gt-panel-border-orange {
-    border-top: 8px solid #e47203;
+    border-top: 8px solid #ed1c24;
     padding: 15px;
     margin-bottom: 0px;
     border-left: none !important;
@@ -1515,7 +1515,7 @@ a.gt-footer-develop:focus {
 }
 
 .inContactPanel .gt-panel-border-green {
-    border-top: 8px solid #499202;
+    border-top: 8px solid #ed1c24;
     padding: 15px;
     margin-bottom: 0px;
     border-left: none !important;
@@ -1529,14 +1529,14 @@ a.gt-footer-develop:focus {
 .inContactPanel .gt-panel-border-orange .gt-panel-title {
     margin-top: 5px;
     margin-bottom: 5px;
-    color: #e47203;
+    color: #ed1c24;
 }
 
 .inContactPanel .gt-panel-head .gt-panel-title,
 .inContactPanel .gt-panel-border-green .gt-panel-title {
     margin-top: 5px;
     margin-bottom: 5px;
-    color: #499202;
+    color: #ed1c24;
 }
 
 .inContactPanel .gt-panel-body {
@@ -2127,7 +2127,7 @@ aside .my-match-aside li a {
     padding-bottom: 20px;
     padding-left: 15px;
     padding-right: 15px;
-    color: #499202;
+    color: #0b0e21;
     background: #fdfdfd;
     display: block;
     font-size: 13px;
@@ -2138,7 +2138,7 @@ aside .my-match-aside li a {
 aside .my-match-aside li a:hover,
 aside .my-match-aside li a:focus {
     color: white;
-    background: #E47203;
+    background: #0b0e21;
     transition: all 0.3s ease-in-out;
     border-bottom: 0px;
 }
@@ -2192,7 +2192,7 @@ li {
     width: 100%;
     float: left;
     padding: 15px 10px;
-    color: #499202;
+    color: #0b0e21;
     font-weight: 500;
     border-bottom: 1px solid #f3f3f3;
     transition: all 0.2s ease-in-out;
@@ -2200,7 +2200,7 @@ li {
 }
 
 .gt-left-exp .panel-default a.gt-exp-opt:hover {
-    color: #499202;
+    color: #ed1c24;
     background: #F9F9F9;
 }
 
@@ -2236,7 +2236,7 @@ li {
     background-color: rgba(255, 255, 255, 1.00) !important;
     border: 1px solid #ddd;
     border-bottom-color: transparent;
-    box-shadow: 0px -5px 0px 0px rgb(228, 114, 3);
+    /* box-shadow: 0px -5px 0px 0px rgb(228, 114, 3); */
     font-size: 14px;
     padding-top: 16px;
     padding-bottom: 16px;
@@ -3003,7 +3003,7 @@ a:hover .gt-btn-round {
 
 .gt-upload-photo .gt-profile-pic-title {
     padding: 15px;
-    background: #e47203;
+    background: #ed1c24;
     color: #FFFFFF;
     width: 100%;
     float: left;
@@ -3442,11 +3442,11 @@ a.gt-member-profile-circle:hover {
 /*-- Borders --*/
 
 .border-right-green {
-    border-right: 1px solid #3d7c00;
+    border-right: 1px solid #ce0a11
 }
 
 .border-left-green {
-    border-left: 1px solid #3d7c00;
+    border-left: 1px solid #ce0a11
 }
 
 .gt-border-bottom-smoke-white {
@@ -3492,7 +3492,7 @@ a.gt-member-profile-circle:hover {
 }
 
 .inThemeOrange {
-    color: #e47203;
+    color: #ed1c24;
 }
 
 .inThemeGreen {
@@ -3585,7 +3585,7 @@ a.gt-text-white:focus {
 }
 
 .gt-text-blue {
-    color: rgb(8, 156, 190) !important;
+    color: rgb(237 28 36) !important
 }
 
 a.gt-text-blue {
@@ -4207,7 +4207,7 @@ a.gt-text-light-Grey:focus {
 }
 
 .gt-panel.gt-panel-orange .gt-panel-head {
-    background: #e47203;
+    background: #0b0e21;
     color: rgba(255, 255, 255, 1.00);
 }
 
@@ -4277,13 +4277,13 @@ a.gt-text-light-Grey:focus {
     font-weight: 500;
     color: rgba(255, 255, 255, 1.00);
     font-size: 12px;
-    text-shadow: 0px 2px 1px #3b6b0e;
+    /* text-shadow: 0px 2px 1px #3b6b0e; */
 }
 
 .gt-navbar-green ul.nav>li>a:hover,
 .gt-navbar-green ul.nav>li>a:focus {
     text-decoration: none;
-    background-color: rgba(64, 131, 0, 0.5);
+    background-color: #0b0e21;
     transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
@@ -4312,8 +4312,8 @@ a.gt-text-light-Grey:focus {
 }
 
 .gt-navbar-green {
-    background-color: #499202;
-    border-color: #499202;
+    background-color: #ed1c24;
+    border-color: #ed1c24;
     box-shadow: 0px 3px 9px 0px rgb(0 0 0 / 35%);
 }
 
@@ -5179,14 +5179,20 @@ input.ng-invalid.ng-dirty {
     position: relative;
     top: 90px;
     left: 45px;
-    color: #fff;
+    color: #ffffff;
 }
 
+
+
 .feature i {
-    color: #c52525;
+    color: #ffffff;
 }
 
 .featuresImg img {
     width: 36%;
     margin: auto;
+}
+
+.badge {
+    background-color: #0b0e21;
 }
