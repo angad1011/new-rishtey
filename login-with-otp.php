@@ -8,11 +8,12 @@ $configObj = new Config();
 if(isset($_POST['userId'])){
     // Check mobile no is registered or not
     $userId=$_POST['userId'];
-	$userIdCheck=$DatabaseCo->dbLink->query("SELECT matri_id,mobile,email,mobile_code FROM register WHERE (matri_id='$userId' OR mobile='$userId' OR email='$userId')");
+	$userIdCheck=$DatabaseCo->dbLink->query("SELECT matri_id,mobile,email,mobile_code,username FROM register WHERE (matri_id='$userId' OR mobile='$userId' OR email='$userId')");
 	if(mysqli_num_rows($userIdCheck) == 1){
 		$mobileQry=mysqli_fetch_object($userIdCheck);
 	    $mobileNo=$mobileQry->mobile;
         $mobileCode=$mobileQry->mobile_code;
+        $username=$mobileQry->username;
         
         //Set Mobile no and country code in session
         $_SESSION['mobile_se']=$mobileNo;
